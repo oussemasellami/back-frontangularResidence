@@ -1,12 +1,13 @@
-<p>details works!</p>
-{{listdetails.id }}
-<br>
-{{listdetails.name }}
-<br>
-{{listdetails.address }}
-<br>
-{{listdetails.image }}
-<br>
-{{listdetails.status }}
-<br>
-<button class="btn btn-dark" routerLink="/residence"> redirect To Home</button>
+{{ listdetails.id }}
+
+<br />
+<img [src]="listdetails.image" class="card-img-top w-100 h-100" alt="..." />
+<br />
+{{ listdetails.name }}
+<br />
+{{ listdetails.address }}
+<br />
+{{ listdetails.status }}
+<br />
+<br />
+<button class="btn btn-dark" routerLink="/residence">redirect To Home</button>

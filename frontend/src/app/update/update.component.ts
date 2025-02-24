@@ -22,7 +22,7 @@ export class UpdateComponent implements OnInit {
 
     this.formR=new FormGroup({
     
-      id:new FormControl('',[Validators.required,Validators.minLength(2)]),
+     // id:new FormControl('',[Validators.required,Validators.minLength(2)]),
       name:new FormControl('',[Validators.required,Validators.pattern(/^[A-Z][a-z]/)]),
       address:new FormControl('',[Validators.required,Validators.maxLength(10)]),
       image:new FormControl('',Validators.required),

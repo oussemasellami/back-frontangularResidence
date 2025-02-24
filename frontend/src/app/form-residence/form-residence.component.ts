@@ -22,17 +22,17 @@ export class FormResidenceComponent implements OnInit{
 
 this.formR=new FormGroup({
 
-  id:new FormControl('',[Validators.required,Validators.minLength(2)]),
+  //id:new FormControl('',[Validators.required,Validators.minLength(2)]),
   name:new FormControl('',[Validators.required,Validators.pattern(/^[A-Z][a-z]/)]),
   address:new FormControl('',[Validators.required,Validators.maxLength(10)]),
-  image:new FormControl('',Validators.required),
+  image:new FormControl('../../assets/images/residence3.jpg',Validators.required),
   status:new FormControl('',[Validators.required,Validators.pattern(/^disponible+$/)])
 })
   }
 
-  get id(){
+ /* get id(){
     return this.formR.get('id')
-  }
+  }*/
 
   get name(){
     return this.formR.get('name')
