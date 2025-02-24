@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ResidenceService } from '../service/residence.service';
 import { Residence } from 'src/core/models/residence';
 
@@ -10,30 +10,53 @@ import { Residence } from 'src/core/models/residence';
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
-idurl!:any
-  constructor(private act:ActivatedRoute,private resService:ResidenceService){
+  idupadate!:number
+  formR!:FormGroup
+  listupdateresidence:Residence=new Residence
+  constructor(private act:ActivatedRoute,private resService:ResidenceService,private route:Router){
 
   }
-  residenceform!:FormGroup
-  listnew:Residence[]=[]
   ngOnInit(): void {
-this.idurl=this.act.snapshot.params['id']
-this.residenceform=new FormGroup({
-     // id:new FormControl('',[Validators.required,Validators.pattern(/^[1-9]/)]),
-      name:new FormControl('',[Validators.required,Validators.pattern(/^[A-Z]/)]),
+    this.idupadate=this.act.snapshot.params['id']
+
+
+    this.formR=new FormGroup({
+    
+      id:new FormControl('',[Validators.required,Validators.minLength(2)]),
+      name:new FormControl('',[Validators.required,Validators.pattern(/^[A-Z][a-z]/)]),
       address:new FormControl('',[Validators.required,Validators.maxLength(10)]),
       image:new FormControl('',Validators.required),
-      status:new FormControl('',[Validators.required,Validators.pattern(/^false$/)]),
+      status:new FormControl('',[Validators.required,Validators.pattern(/^disponible+$/)])
     })
-this.resService.getResidenceById(this.idurl).subscribe((data)=>{
-this.listnew=data
-this.residenceform.patchValue(this.listnew as any)
-})
-  }
- // get id(){return this.residenceform.get('id')}
-  get name(){return this.residenceform.get('name')}
-  get address(){return this.residenceform.get('address')}
-  get status(){return this.residenceform.get('status')}
+    this.resService.getResidence(this.idupadate).subscribe((data)=>{
+this.listupdateresidence=data
+console.log(this.listupdateresidence)
 
-  UPDATE(){}
+this.formR.patchValue(this.listupdateresidence as any)
+
+    })
+    
+  }
+
+
+
+  get name(){
+    return this.formR.get('name')
+  }
+
+  get address(){
+    return this.formR.get('address')
+  }
+
+  get status(){
+    return this.formR.get('status')
+  }
+
+  update(){
+    this.resService.updateResidence
+    (this.formR.value,this.idupadate).subscribe(()=>{
+this.route.navigate(['/residence'])
+    })
+  }
+
 }

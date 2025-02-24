@@ -7,37 +7,34 @@ import { Residence } from 'src/core/models/residence';
   providedIn: 'root'
 })
 export class ResidenceService {
-  private UrlResidence = "http://localhost:3000/api/residences";
+UrlResidence="http://localhost:3000/residences"
+  constructor(private http:HttpClient) { }
 
-  constructor(private http: HttpClient) { }
+  getnumberinlist(list:any,creteria:any,value:any){
+    let n=0
+    for(let i in list){
 
-  getNumber(list: any, criteria: string, value: any): number {
-    let n = 0;
-    for (let i in list) {
-      if (list[i][criteria] === value) {
-        n++;
+      if(list[i][creteria]==value){
+        n++
       }
     }
-    return n;
+return n
   }
 
-  getResidences(): Observable<Residence[]> {
-    return this.http.get<Residence[]>(this.UrlResidence);
-  }
 
-  addResidence(res: Residence): Observable<Residence[]> {
-    return this.http.post<Residence[]>(this.UrlResidence, res);
+  getallResidence():Observable<Residence[]>{
+    return this.http.get<Residence[]>(this.UrlResidence)
   }
-
-  deleteResidence(id: string | number): Observable<Residence[]> {
-    return this.http.delete<Residence[]>(`${this.UrlResidence}/${id}`);
+  addResidence(res:Residence):Observable<Residence[]>{
+    return this.http.post<Residence[]>(this.UrlResidence,res)
   }
-
-  getResidenceById(id: string | number): Observable<Residence[]> {
-    return this.http.get<Residence[]>(`${this.UrlResidence}/${id}`);
+  updateResidence(res:Residence,id:any):Observable<Residence[]>{
+    return this.http.put<Residence[]>(this.UrlResidence+'/'+id,res)
   }
-
-  updateResidence(id: string | number, res: Residence): Observable<Residence[]> {
-    return this.http.put<Residence[]>(`${this.UrlResidence}/${id}`, res);
+  getResidence(id:any):Observable<Residence>{
+    return this.http.get<Residence>(this.UrlResidence+'/'+id)
+  }
+  deleteResidence(id:any):Observable<Residence[]>{
+    return this.http.delete<Residence[]>(this.UrlResidence+'/'+id)
   }
 }

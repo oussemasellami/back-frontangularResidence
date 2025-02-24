@@ -3,24 +3,21 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "firstproject": {
+    "4arctic9": {
       "projectType": "application",
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
-        /*test part cors*/
         "serve": {
-        "options": {
-            "proxyConfig": "proxy.conf.json"
-        }
-    },
-    /***********************/
+          "options": {
+              "proxyConfig": "proxy.conf.json"
+          }},
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/firstproject",
+            "outputPath": "dist/4arctic9",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -68,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "firstproject:build:production"
+              "browserTarget": "4arctic9:build:production"
             },
             "development": {
-              "browserTarget": "firstproject:build:development"
+              "browserTarget": "4arctic9:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "firstproject:build"
+            "browserTarget": "4arctic9:build"
           }
         },
         "test": {
@@ -104,6 +101,6 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "3e23cc3e-2595-4c2d-a612-ca6f78c872d9"
   }
 }

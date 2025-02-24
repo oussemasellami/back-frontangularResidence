@@ -1,6 +1,12 @@
 <p>details works!</p>
-{{ idd }}
-
-<div *ngFor="let i of listdetails" class="card m-3" style="width: 18rem">
-  <h5 class="card-title">{{ i.name }}</h5>
-</div>
+{{listdetails.id }}
+<br>
+{{listdetails.name }}
+<br>
+{{listdetails.address }}
+<br>
+{{listdetails.image }}
+<br>
+{{listdetails.status }}
+<br>
+<button class="btn btn-dark" routerLink="/residence"> redirect To Home</button>

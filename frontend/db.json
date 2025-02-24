@@ -1,18 +1,25 @@
 {
-  "residence": [
+  "residences": [
     {
-      "id": 1,
+      "id": "1",
       "name": "El fel",
       "address": "Borj Cedria",
       "image": "../../assets/images/residence1.jpg",
       "status": "Disponible"
     },
     {
-      "name": "Anna",
-      "address": "13 rue lon",
+      "id": "12",
+      "name": "Ali",
+      "address": "1 rue",
       "image": "../../assets/images/residence1.jpg",
-      "status": "false",
-      "id": "eee8"
+      "status": "disponible"
+    },
+    {
+      "id": "13",
+      "name": "Ahmed",
+      "address": "8rue",
+      "image": "../../assets/images/residence1.jpg",
+      "status": "disponible"
     }
   ]
 }

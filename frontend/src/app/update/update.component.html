@@ -1,87 +1,88 @@
-<p>update works!</p>
-{{ idurl }}
-<p>formresidence works!</p>
+<p>form-residence works!</p>
 <div class="container">
-  <form [formGroup]="residenceform">
-    <!--<div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Id</span>
-        </div>
-        <input type="text" aria-label="First name" class="form-control" formControlName="id">
-        <div class="alert alert-danger" *ngIf="id?.invalid &&(id?.touched || id?.dirty)">
-          invalid id 
-        </div>
-      </div>-->
-    <br />
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">name</span>
-      </div>
+  <form [formGroup]="formR">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Id</label>
       <input
-        type="text"
-        aria-label="First name"
+        type="email"
         class="form-control"
-        formControlName="name"
-      />
-    </div>
-    <div
-      class="alert alert-danger"
-      *ngIf="name?.invalid && (name?.touched || name?.dirty)"
-    >
-      invalid id
-    </div>
-    <br />
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">address</span>
-      </div>
-      <input
-        type="text"
-        aria-label="First name"
-        class="form-control"
-        formControlName="address"
-      />
-      <div class="alert alert-danger" *ngIf="address?.errors?.['maxlength']">
-        max length is 10 for name
-      </div>
-    </div>
-    <br />
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Image</span>
-      </div>
-      <input
-        type="text"
-        aria-label="First name"
-        class="form-control"
-        formControlName="image"
-      />
-    </div>
-    <br />
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">status</span>
-      </div>
-      <input
-        type="text"
-        aria-label="First name"
-        class="form-control"
-        formControlName="status"
+        formControlName="id"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
       />
       <div
         class="alert alert-danger"
-        *ngIf="status?.invalid && (status?.touched || status?.dirty)"
+        *ngIf="formR.get('id')?.invalid && formR.get('id')?.touched"
       >
-        status is not false
+        invalid id
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="name"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="name?.invalid && (name?.touched || name?.dirty)"
+      >
+        invalid name
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Address</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="address"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+      <div class="alert alert-danger" *ngIf="address?.errors?.['maxlength']">
+        invalid name
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Image</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="image"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">status</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="status"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="status?.invalid && status?.touched"
+      >
+        status => disponible
       </div>
     </div>
 
     <button
       class="btn btn-primary"
-      (click)="UPDATE()"
-     
+      (click)="update()"
+      [disabled]="formR.invalid"
     >
-      uPDATE
+      update
     </button>
   </form>
 </div>
